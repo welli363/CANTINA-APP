@@ -9,9 +9,8 @@ export default function LoginScreen(){
 
     return(
         <View style={styles.container}>
-            <Text>Usuário</Text>
+            <Text style={styles.textoLogin}>Login</Text>
             <TextInput placeholder="Digite seu e-mail..." style={styles.input} onChangeText={(e) => setEmail (e)}></TextInput>
-            <Text>Senha</Text>
             <TextInput placeholder="Digite sua senha..." style={styles.input} onChangeText={(s) => setSenha (s)}></TextInput>
             <TouchableOpacity style={styles.botao}>
                 <Text style={styles.textoBotao} onPress={() => Alert.alert(`Usuário: ${email} \n Senha: ${senha}`)}>Confirmar</Text>
@@ -23,9 +22,15 @@ export default function LoginScreen(){
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#F5F5F5',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    textoLogin: {
+        fontSize:  70,
+        fontFamily: 'Arial',
+        marginBottom: 20, 
+        fontWeight: 'bold',
     },
     input: {
         height: 40,
