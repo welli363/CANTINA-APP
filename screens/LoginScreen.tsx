@@ -1,11 +1,24 @@
 import { StyleSheet, Text, View, TextInput, Button, TouchableOpacity, Alert } from "react-native";
 import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 
 export default function LoginScreen(){
-
+    const navigation = useNavigation();
     const [email, setEmail] = useState ('');
     const [senha, setSenha] = useState ('');
+
+    function handleLogin(){
+        //validar senha e usuario
+        if(email === 'teste@gmail.com' && senha === '123'){
+            navigation.navigate('Home');
+        }else {
+            Alert.alert('Usuário não encontrado.')
+        }
+        //redirecionar para a tela principal 
+
+    }
+
 
     return(
         <View style={styles.container}>
@@ -13,7 +26,7 @@ export default function LoginScreen(){
             <TextInput placeholder="Digite seu e-mail..." style={styles.input} onChangeText={(e) => setEmail (e)}></TextInput>
             <TextInput placeholder="Digite sua senha..." style={styles.input} onChangeText={(s) => setSenha (s)}></TextInput>
             <TouchableOpacity style={styles.botao}>
-                <Text style={styles.textoBotao} onPress={() => Alert.alert(`Usuário: ${email} \n Senha: ${senha}`)}>Confirmar</Text>
+                <Text style={styles.textoBotao} onPress={handleLogin}>Confirmar</Text>
             </TouchableOpacity>
         </View>
     );
